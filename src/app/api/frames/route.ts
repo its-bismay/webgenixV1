@@ -8,6 +8,14 @@ export async function GET(request: NextRequest) {
 	const frameId = searchParams.get("frameId");
 	const projectId = searchParams.get("projectId");
 
+	if (!frameId) {
+  return NextResponse.json(
+    { error: "frameId is required" },
+    { status: 400 }
+  );
+}
+
+
 
 	const frameResults = await db
 		.select()
